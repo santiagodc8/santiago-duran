@@ -74,13 +74,4 @@ export const projects: Project[] = [
       "Marca de desarrollo de software (나무 = “árbol” en coreano). Landing que agrupa proyectos y servicios a la medida.",
     tags: ["Branding", "Web", "Freelance"],
   },
-  {
-    slug: "contrato-limpio",
-    name: "ContratoLimpio",
-    emoji: "🔍",
-    status: "ACADÉMICO",
-    description:
-      "Propuesta de sistema de detección de anomalías con IA para contratación pública colombiana (datos SECOP), alineado con CONPES 4144.",
-    tags: ["IA", "Detección de anomalías", "SECOP", "Datos abiertos"],
-  },
 ];
