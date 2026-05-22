@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
 import { SectionHeading } from "./SectionHeading";
+import { EASE_OUT } from "@/lib/motion";
 
 export function About() {
   return (
@@ -63,7 +64,7 @@ export function About() {
                   transition={{
                     duration: 0.5,
                     delay: i * 0.08,
-                    ease: [0.2, 0.8, 0.2, 1],
+                    ease: EASE_OUT,
                   }}
                   className="relative pl-10"
                 >

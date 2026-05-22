@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SiGithub } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
 import { profile } from "@/data/profile";
 
 const links = [
@@ -31,9 +33,16 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-        <a href="#top" className="group flex items-center gap-2">
-          <span className="font-mono text-xs text-text-faint">{"//"}</span>
-          <span className="font-semibold tracking-tight">
+        {/* Logo monogram */}
+        <a href="#top" className="group flex items-center gap-2.5">
+          <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--border)] bg-bg-soft overflow-hidden">
+            <span className="absolute inset-0 opacity-70 bg-gradient-to-br from-accent via-accent-2 to-accent-3" />
+            <span className="absolute inset-[1.5px] rounded-[7px] bg-bg" />
+            <span className="relative font-mono text-xs font-bold tracking-tighter text-text">
+              SD
+            </span>
+          </span>
+          <span className="hidden sm:block font-semibold tracking-tight">
             {profile.shortName.split(" ")[0]}
             <span className="text-gradient">.</span>
             {profile.shortName.split(" ")[1]?.toLowerCase()}
@@ -53,11 +62,37 @@ export function Navbar() {
               {l.label}
             </a>
           ))}
+
+          {/* Social icons */}
+          <div className="flex items-center gap-3 pl-3 border-l border-[var(--border)]">
+            <a
+              href={profile.contact.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="text-text-dim hover:text-text transition-colors"
+            >
+              <SiGithub className="text-base" />
+            </a>
+            <a
+              href={profile.contact.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="text-text-dim hover:text-text transition-colors"
+            >
+              <FaLinkedin className="text-base" />
+            </a>
+          </div>
+
           <a
             href={profile.contact.cv}
-            className="text-sm px-4 py-2 rounded-full border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
+            className="group inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
           >
             CV
+            <span className="transition-transform group-hover:translate-x-0.5">
+              ↗
+            </span>
           </a>
         </nav>
 
@@ -108,13 +143,33 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href={profile.contact.cv}
-                onClick={() => setOpen(false)}
-                className="mt-2 inline-flex self-start text-sm px-4 py-2 rounded-full border border-accent/40 text-accent"
-              >
-                Descargar CV
-              </a>
+              <div className="flex items-center gap-4 pt-3 border-t border-[var(--border)]">
+                <a
+                  href={profile.contact.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  className="text-text-dim hover:text-text"
+                >
+                  <SiGithub className="text-lg" />
+                </a>
+                <a
+                  href={profile.contact.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="text-text-dim hover:text-text"
+                >
+                  <FaLinkedin className="text-lg" />
+                </a>
+                <a
+                  href={profile.contact.cv}
+                  onClick={() => setOpen(false)}
+                  className="ml-auto inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full border border-accent/40 text-accent"
+                >
+                  Descargar CV ↗
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

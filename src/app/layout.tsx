@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Sora, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/data/profile";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -93,6 +94,8 @@ export default function RootLayout({
         </div>
         <div className="bg-grid" aria-hidden />
         <div className="bg-noise" aria-hidden />
+        <div className="bg-grain" aria-hidden />
+        <ScrollProgress />
         {children}
       </body>
     </html>
