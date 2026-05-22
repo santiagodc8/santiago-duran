@@ -66,7 +66,7 @@ export function Contact() {
             className="group block"
           >
             <p className="font-mono text-xs text-text-faint tracking-widest">
-              // ENVÍAME UN CORREO
+              {"// ENVÍAME UN CORREO"}
             </p>
             <p className="mt-3 text-2xl sm:text-4xl font-semibold tracking-tight group-hover:text-gradient transition-colors break-all">
               {profile.contact.email}

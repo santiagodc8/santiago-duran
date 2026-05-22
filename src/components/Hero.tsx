@@ -43,7 +43,7 @@ export function Hero() {
             variants={item}
             className="mt-8 font-mono text-xs text-text-faint tracking-widest"
           >
-            // {profile.role.toUpperCase()}
+            {"// "}{profile.role.toUpperCase()}
           </motion.p>
 
           <motion.h1
