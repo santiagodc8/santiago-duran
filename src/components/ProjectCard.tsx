@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
 import type { Project, ProjectStatus } from "@/data/projects";
 import { iconForTag } from "@/lib/icons";
 import { Spotlight } from "./Spotlight";
@@ -44,12 +46,27 @@ export function ProjectCard({ project, index }: Props) {
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-5">
           <div className="relative">
-            <div
-              className="flex items-center justify-center w-14 h-14 rounded-2xl bg-bg-soft border border-[var(--border)] text-3xl transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-[1.05]"
-              aria-hidden
-            >
-              {project.emoji}
-            </div>
+            {project.logo ? (
+              <div
+                className="flex items-center justify-center w-14 h-14 rounded-2xl border border-[var(--border)] overflow-hidden transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-[1.05]"
+                style={{ backgroundColor: project.logoBg ?? "var(--bg-soft)" }}
+              >
+                <Image
+                  src={project.logo}
+                  alt={`${project.name} logo`}
+                  width={56}
+                  height={56}
+                  className="object-contain w-10 h-10"
+                />
+              </div>
+            ) : (
+              <div
+                className="flex items-center justify-center w-14 h-14 rounded-2xl bg-bg-soft border border-[var(--border)] text-3xl transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-[1.05]"
+                aria-hidden
+              >
+                {project.emoji}
+              </div>
+            )}
             <span className="absolute -top-1 -right-1 font-mono text-[9px] tracking-widest text-text-faint bg-bg-card border border-[var(--border)] rounded px-1 py-0.5">
               {String(index + 1).padStart(2, "0")}
             </span>
@@ -102,10 +119,25 @@ export function ProjectCard({ project, index }: Props) {
           <span className="font-mono text-[10px] tracking-widest">
             {project.slug.toUpperCase()}
           </span>
-          <span className="inline-flex items-center gap-1 text-xs opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300 text-text">
-            Detalles
-            <span aria-hidden>→</span>
-          </span>
+          {project.url ? (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-text-dim hover:text-accent transition-colors"
+            >
+              Ver en vivo
+              <FiArrowUpRight
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden
+              />
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-xs opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300 text-text">
+              Detalles
+              <span aria-hidden>→</span>
+            </span>
+          )}
         </div>
       </Spotlight>
     </motion.div>
